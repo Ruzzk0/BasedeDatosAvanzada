@@ -13,23 +13,24 @@ CREATE TABLE Clientes(
     usuario VARCHAR(50) NOT NULL,
     calle VARCHAR(100) NOT NULL,
     colonia VARCHAR(100) NOT NULL,
-    numero VARCHAR(10),
-    id_domicilio INT 
+    numero VARCHAR(10)
 );
 
 CREATE TABLE Cuentas(
 	id_cuenta INT PRIMARY KEY AUTO_INCREMENT,
     num_cuenta INT NOT NULL UNIQUE,
-    fecha_apertura DATE NOT NULL,
+    fecha_apertura DATE DEFAULT NOW(),
     saldo DOUBLE,
-    id_cliente INT 
+    estado VARCHAR(50) NOT NULL DEFAULT "ACTIVA",
+    id_cliente INT,
+    CHECK (estado in ("ACTIVA", "CANCELADA"))
 );
 
 CREATE TABLE Transacciones (
     id_transacciones INT PRIMARY KEY AUTO_INCREMENT,
     fecha_hora DATETIME NOT NULL,
     monto DOUBLE NOT NULL,
-    id_cliente INT,
+    id_cliente INT NOT NULL,
     id_transferencia INT,
     id_retiro INT 
 );
@@ -44,7 +45,6 @@ CREATE TABLE Transaccion_Trans(
 	id_transferencia INT PRIMARY KEY AUTO_INCREMENT,
 	num_cuenta INT NOT NULL
 );
-
 
 #Llaves Foraneas
 
