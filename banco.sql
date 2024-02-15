@@ -7,8 +7,13 @@ CREATE TABLE Clientes(
     nombres VARCHAR(200) NOT NULL,
     apellido_paterno VARCHAR(100) NOT NULL,
     apellido_materno VARCHAR(100),
-    edad INT NOT NULL,
+    edad INT,
     fecha_nacimiento DATE NOT NULL,
+    contraseña VARCHAR(50) NOT NULL,
+    usuario VARCHAR(50) NOT NULL,
+    calle VARCHAR(100) NOT NULL,
+    colonia VARCHAR(100) NOT NULL,
+    numero VARCHAR(10),
     id_domicilio INT 
 );
 
@@ -17,16 +22,7 @@ CREATE TABLE Cuentas(
     num_cuenta INT NOT NULL UNIQUE,
     fecha_apertura DATE NOT NULL,
     saldo DOUBLE,
-    contraseña VARCHAR(50) NOT NULL UNIQUE,
     id_cliente INT 
-);
-
-CREATE TABLE Domicilios(
-	id_domicilio INT PRIMARY KEY AUTO_INCREMENT,
-    calle VARCHAR(100) NOT NULL,
-    colonia VARCHAR(100) NOT NULL,
-    cp VARCHAR(10) NOT NULL,
-    numero VARCHAR(10)
 );
 
 CREATE TABLE Transacciones (
@@ -51,7 +47,6 @@ CREATE TABLE Transaccion_Trans(
 
 
 #Llaves Foraneas
-ALTER TABLE Clientes ADD FOREIGN KEY (id_domicilio) REFERENCES Domicilios(id_domicilio);
 
 ALTER TABLE Cuentas ADD FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente);
 
