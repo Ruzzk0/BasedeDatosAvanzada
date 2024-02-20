@@ -3,7 +3,6 @@ package com.mycompany.bancopersistencia.daos;
 import com.mycompany.bancodominio.Clientes;
 import com.mycompany.bancopersistencia.daos.conexion.Conexion;
 import com.mycompany.bancopersistencia.daos.conexion.IConexion;
-import com.mycompany.bancopersistencia.daos.dtos.ClientesDTO;
 import com.mycompany.bancopersistencia.daos.excepciones.PersistenciaException;
 import java.sql.Connection;
 import java.sql.DriverManager;
