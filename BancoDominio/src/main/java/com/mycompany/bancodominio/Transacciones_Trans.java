@@ -52,6 +52,13 @@ public class Transacciones_Trans {
     public String toString() {
         return "Transacciones_Trans{" + "id_transferencia=" + id_transferencia + ", num_cuenta=" + num_cuenta + ", id_transacciones=" + id_transacciones + '}';
     }
+    
+     /**
+     * Calcula un código hash para la instancia de Clientes basado en sus
+     * atributos.
+     *
+     * @return
+     */
 
     @Override
     public int hashCode() {
@@ -62,6 +69,14 @@ public class Transacciones_Trans {
         return hash;
     }
 
+    /**
+     * Compara dos instancias de Clientes para verificar si son iguales
+     * basándose en sus atributos.
+     *
+     * @param obj
+     * @return
+     */
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

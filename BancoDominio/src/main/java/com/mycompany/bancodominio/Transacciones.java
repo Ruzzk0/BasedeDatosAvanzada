@@ -66,6 +66,13 @@ public class Transacciones {
         return "Transacciones{" + "id_transacciones=" + id_transacciones + ", fecha_hora=" + fecha_hora + ", monto=" + monto + ", id_cliente=" + id_cliente + '}';
     }
 
+     /**
+     * Calcula un código hash para la instancia de Clientes basado en sus
+     * atributos.
+     *
+     * @return
+     */
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -75,6 +82,14 @@ public class Transacciones {
         hash = 19 * hash + Objects.hashCode(this.id_cliente);
         return hash;
     }
+    
+    /**
+     * Compara dos instancias de Clientes para verificar si son iguales
+     * basándose en sus atributos.
+     *
+     * @param obj
+     * @return
+     */
 
     @Override
     public boolean equals(Object obj) {
