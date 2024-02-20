@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  *
  * @author KATT
  */
-public class Conexion {
+public class Conexion implements IConexion{
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.33
 
     String url = "jdbc:mysql://localhost:3306";
@@ -41,7 +41,8 @@ public class Conexion {
         return conexion;
     }
 
-    public void desconectar() throws SQLException {
+    @Override
+    public Connection desconectar() throws SQLException {
         try {
             if (conexion != null && !conexion.isClosed()) {
                 conexion.close();
@@ -49,6 +50,7 @@ public class Conexion {
         } catch (SQLException e) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         }
+        return null;
     }
 
 }

@@ -1,8 +1,8 @@
-C:\Users\Katt\Documents\bPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\IClientesDAO.java
-C:\Users\Katt\Documents\bPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\dtos\ClientesDTO.java
-C:\Users\Katt\Documents\bPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\conexion\Conexion.java
-C:\Users\Katt\Documents\bPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\ICuentaDAO.java
-C:\Users\Katt\Documents\bPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\ClientesDAO.java
-C:\Users\Katt\Documents\bPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\CuentaDAO.java
-C:\Users\Katt\Documents\bPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\excepciones\PersistenciaException.java
-C:\Users\Katt\Documents\bPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\conexion\IConexion.java
+D:\Archivos de programa\GitHub\Proyectos\Repo\ASD\BasedeDatosAvanzada\BancoPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\excepciones\PersistenciaException.java
+D:\Archivos de programa\GitHub\Proyectos\Repo\ASD\BasedeDatosAvanzada\BancoPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\ClientesDAO.java
+D:\Archivos de programa\GitHub\Proyectos\Repo\ASD\BasedeDatosAvanzada\BancoPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\conexion\Conexion.java
+D:\Archivos de programa\GitHub\Proyectos\Repo\ASD\BasedeDatosAvanzada\BancoPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\IClientesDAO.java
+D:\Archivos de programa\GitHub\Proyectos\Repo\ASD\BasedeDatosAvanzada\BancoPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\CuentaDAO.java
+D:\Archivos de programa\GitHub\Proyectos\Repo\ASD\BasedeDatosAvanzada\BancoPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\dtos\ClientesDTO.java
+D:\Archivos de programa\GitHub\Proyectos\Repo\ASD\BasedeDatosAvanzada\BancoPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\ICuentaDAO.java
+D:\Archivos de programa\GitHub\Proyectos\Repo\ASD\BasedeDatosAvanzada\BancoPersistencia\src\main\java\com\mycompany\bancopersistencia\daos\conexion\IConexion.java
