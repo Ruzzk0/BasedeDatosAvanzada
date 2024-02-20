@@ -9,7 +9,7 @@ public class CuentasForm extends javax.swing.JFrame {
     /**
      * Constructor
      */
-    public CuentasForm() throws PersistenciaException {
+    public CuentasForm() {
 
     }
 
@@ -199,7 +199,7 @@ public class CuentasForm extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * Botón que regresa al usuario al menú principal

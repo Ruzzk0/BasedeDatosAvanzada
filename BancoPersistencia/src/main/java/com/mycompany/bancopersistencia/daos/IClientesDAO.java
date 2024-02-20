@@ -12,4 +12,8 @@ public interface IClientesDAO {
 
     public Clientes agregarCliente(Clientes cliente) throws PersistenciaException;
 
+    public boolean verificarCredenciales(String usuario, String contraseña) throws PersistenciaException;
+
+    public Clientes actualizarCliente(Clientes clientes) throws PersistenciaException;
+
 }

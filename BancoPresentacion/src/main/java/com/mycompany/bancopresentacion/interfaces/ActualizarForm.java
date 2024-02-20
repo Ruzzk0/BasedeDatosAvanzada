@@ -1,15 +1,79 @@
 package com.mycompany.bancopresentacion.interfaces;
 
+import com.mycompany.bancodominio.Clientes;
+import com.mycompany.bancopersistencia.daos.ClientesDAO;
+import com.mycompany.bancopersistencia.daos.conexion.Conexion;
+import com.mycompany.bancopersistencia.daos.conexion.IConexion;
 import com.mycompany.bancopersistencia.daos.excepciones.PersistenciaException;
 import javax.swing.JOptionPane;
 
 public class ActualizarForm extends javax.swing.JFrame {
 
-    /**
-     * Constructores
-     */
-    public ActualizarForm() throws PersistenciaException {
+    IConexion conexionBD;
+    private final ClientesDAO clientesDAO;
+    String url = "jdbc:mysql://localhost/banco";
+    String uwu = "root";
+    String contra = "1512";
+
+    public ActualizarForm() {
+        conexionBD = new Conexion(url, uwu, contra);
+        this.clientesDAO = new ClientesDAO(conexionBD);
         initComponents();
+    }
+
+    /**
+     * Campos de texto para los datos personales del cliente
+     *
+     * @return Nuevo cliente registrado
+     */
+    private Clientes extraerDatosCliente() {
+        String nombre = this.txtfNombres.getText();
+        String apellidoPaterno = this.txtfApellidoPat.getText();
+        String apellidoMaterno = this.txtfApellidoMat.getText();
+        if (!this.txtfFechaNac.getText().matches("^\\d{4}-(0?[1-9]|1[0-2])-(3[01]|[12][0-9]|0?[1-9])$")) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha invalido ingrese una fecha 'yyyy-mm-dd'");
+        }
+        String fechaNacimiento = this.txtfFechaNac.getText();
+        String usuario = this.txtfUser.getText();
+        String contrasenia = this.txtContra.getText();
+        String calle = this.txtfCalle.getText();
+        String colonia = this.txtfColonia.getText();
+        String numCasa = this.txtfNumCasa.getText();
+        Clientes cliente = new Clientes(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, contrasenia, usuario, calle, colonia, numCasa);
+        return cliente;
+    }
+
+    /**
+     * Limpia las casillas de texto una vez que el cliente se registró
+     */
+    private void limpiarCampos() {
+        this.txtContra.setText("");
+        this.txtfApellidoMat.setText("");
+        this.txtfApellidoPat.setText("");
+        this.txtfCalle.setText("");
+        this.txtfColonia.setText("");
+        this.txtfFechaNac.setText("");
+        this.txtfNombres.setText("");
+        this.txtfNumCasa.setText("");
+        this.txtfUser.setText("");
+    }
+
+    /**
+     * Extrae los datos del cliente y domicilio, se validan y se guardan en la
+     * dao
+     *
+     * @throws PersistenciaException Error
+     */
+    private void guardar() throws PersistenciaException {
+        try {
+            Clientes cliente = this.extraerDatosCliente();
+            ClientesDAO dao = new ClientesDAO(conexionBD);
+            dao.actualizarCliente(cliente);
+            JOptionPane.showMessageDialog(this, "Se actualizo el cliente: " + cliente.getNombres(), "Información", JOptionPane.INFORMATION_MESSAGE);
+            this.limpiarCampos();
+        } catch (PersistenciaException ex) {
+            JOptionPane.showMessageDialog(this, "No fue posible actualizar al cliente", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -291,7 +355,11 @@ public class ActualizarForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
-
+        try {
+            this.guardar();
+        } catch (PersistenciaException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar el cliente");
+        }
     }//GEN-LAST:event_btnAccederActionPerformed
     /**
      * Se encarga de verificar que el nombre de usuario sea mayor o igual a
@@ -310,7 +378,9 @@ public class ActualizarForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-
+        MenuForm m = new MenuForm();
+        m.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed

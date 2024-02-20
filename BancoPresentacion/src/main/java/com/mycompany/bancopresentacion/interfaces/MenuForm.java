@@ -202,13 +202,9 @@ public class MenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTransferMouseClicked
 
     private void btnCuentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCuentasMouseClicked
-        try {
-            CuentasForm u = new CuentasForm();
-            u.setVisible(true);
-            dispose();
-        } catch (PersistenciaException ex) {
-            Logger.getLogger(MenuForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        CuentasForm u = new CuentasForm();
+        u.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnCuentasMouseClicked
     /**
      * Formulario para actualizar la información con la que te registraste
@@ -216,13 +212,9 @@ public class MenuForm extends javax.swing.JFrame {
      * @param evt Actualiza datos
      */
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        try {
-            ActualizarForm a = new ActualizarForm();
-            a.setVisible(true);
-            dispose();
-        } catch (PersistenciaException ex) {
-            Logger.getLogger(MenuForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ActualizarForm a = new ActualizarForm();
+        a.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnActualizarActionPerformed
     /**
      * Generador de folio y contraseña aleatorio para las transacciones
@@ -232,13 +224,14 @@ public class MenuForm extends javax.swing.JFrame {
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
 //        Random random = new Random();
 //        contrasenia= random.nextInt(9000000) + 10000000;
-        Random number = new Random(123L);
-
-        for (int i = 0; i < 20; i++) {
-
-            int n = number.nextInt(21);
-            System.out.println(n);
-        }
+//        Random number = new Random(123L)
+//        for (int i = 0; i < 20; i++) {
+        //          int n = number.nextInt(21);
+//            System.out.println(n);
+// }
+        GenerarFolio f = new GenerarFolio();
+        f.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnGenerarActionPerformed
     /**
      * Agrega saldo a una de las cuentas registradas

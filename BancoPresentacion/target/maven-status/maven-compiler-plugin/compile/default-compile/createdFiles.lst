@@ -5,6 +5,7 @@ com\mycompany\bancopresentacion\interfaces\CrearCuentaForm.class
 com\mycompany\bancopresentacion\interfaces\Inicio$1.class
 com\mycompany\bancopresentacion\interfaces\MenuForm$5.class
 com\mycompany\bancopresentacion\interfaces\TransferenciasForm$2.class
+com\mycompany\bancopresentacion\interfaces\GenerarFolio.class
 com\mycompany\bancopresentacion\interfaces\LoginForm.class
 com\mycompany\bancopresentacion\interfaces\RetiroSinCuentaForm$1.class
 com\mycompany\bancopresentacion\interfaces\ActualizarForm$1.class
@@ -14,6 +15,7 @@ com\mycompany\bancopresentacion\interfaces\CuentasForm$1.class
 com\mycompany\bancopresentacion\interfaces\MenuForm$2.class
 com\mycompany\bancopresentacion\interfaces\TransferenciasForm$3.class
 com\mycompany\bancopresentacion\interfaces\RegistroForm$1.class
+com\mycompany\bancopresentacion\interfaces\GenerarFolio$1.class
 com\mycompany\bancopresentacion\interfaces\CuentasForm.class
 com\mycompany\bancopresentacion\interfaces\MenuForm$6.class
 com\mycompany\bancopresentacion\interfaces\RegistroForm$4.class
@@ -26,6 +28,7 @@ com\mycompany\bancopresentacion\interfaces\LoginForm$2.class
 com\mycompany\bancopresentacion\interfaces\TransferenciasForm$4.class
 com\mycompany\bancopresentacion\interfaces\ActualizarForm$3.class
 com\mycompany\bancopresentacion\interfaces\AgregarSaldoForm$2.class
+com\mycompany\bancopresentacion\interfaces\GenerarFolio$2.class
 com\mycompany\bancopresentacion\interfaces\RegistroForm$2.class
 com\mycompany\bancopresentacion\interfaces\TransferenciasForm$1.class
 com\mycompany\bancopresentacion\interfaces\Inicio$3.class
