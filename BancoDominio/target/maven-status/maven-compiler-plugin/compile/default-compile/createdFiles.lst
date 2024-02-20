@@ -1,0 +1,5 @@
+com\mycompany\bancodominio\Transacciones_Trans.class
+com\mycompany\bancodominio\Cuenta.class
+com\mycompany\bancodominio\Transacciones_Retiro.class
+com\mycompany\bancodominio\Transacciones.class
+com\mycompany\bancodominio\Clientes.class
