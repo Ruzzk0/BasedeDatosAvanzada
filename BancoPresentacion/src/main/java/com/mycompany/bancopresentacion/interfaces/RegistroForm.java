@@ -13,11 +13,15 @@ public class RegistroForm extends javax.swing.JFrame {
 
     IConexion conexionBD;
     private final ClientesDAO clientesDAO;
+    String url = "jdbc:mysql://localhost/banco";
+    String uwu = "root";
+    String contra = "1512";
 
     /**
      * Constructor
      */
     public RegistroForm() {
+        conexionBD = new Conexion(url, uwu, contra);
         this.clientesDAO = new ClientesDAO(conexionBD);
         initComponents();
     }

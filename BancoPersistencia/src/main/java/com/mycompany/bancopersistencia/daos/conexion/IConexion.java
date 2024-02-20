@@ -11,6 +11,4 @@ public interface IConexion {
 
     public Connection conexion() throws SQLException;
 
-    public Connection desconectar() throws SQLException;
-
 }

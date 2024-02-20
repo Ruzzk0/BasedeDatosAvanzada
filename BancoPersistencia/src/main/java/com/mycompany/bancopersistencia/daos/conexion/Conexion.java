@@ -11,46 +11,34 @@ import java.util.logging.Logger;
  *
  * @author KATT
  */
-public class Conexion implements IConexion{
-    // https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.33
+public class Conexion implements IConexion {
 
-    String url = "jdbc:mysql://localhost:3306";
-    String nombreBD = "banco";
-    String usuario = "root";
-    String contra = "1512";
-    String driver = "com.mysql.jdbc.Driver";
+    private String url;
+    private String user;
+    private String password;
+    private static final Logger LOG = Logger.getLogger(Conexion.class.getName());
 
-    Connection conexion = null;
+    public Conexion() {
+    }
 
-    //Metodo para establecer la conexion con la BD
+    Connection conexion;
+
+    public Conexion(String url, String user, String password, Connection conexion) {
+        this.url = url;
+        this.user = user;
+        this.password = password;
+        this.conexion = conexion;
+    }
+
+    public Conexion(String url, String user, String password) {
+        this.url = url;
+        this.user = user;
+        this.password = password;
+    }
+
     public Connection conexion() throws SQLException {
-        //Establecemos el intento de la conexion
-        try {
-            //Cargar los drivers de la base de dtaos en tiempo real o dinamica
-            Class.forName(driver);
-            //Establecer la conexion
-            conexion = DriverManager.getConnection(url + "/" + nombreBD, usuario, contra);
-
-            //Mostrar un mensaje en dado caso quela conexion sea correcta
-            //JOptionPane.showMessageDialog(null, "Conexion Exitosa");
-        } catch (SQLException e) {
-            //JOptionPane.showMessageDialog(null, "Conexion Fallida");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Connection conexion = DriverManager.getConnection(url, user, password);
+        LOG.log(Level.INFO, "Conexión exitosa ", url);
         return conexion;
     }
-
-    @Override
-    public Connection desconectar() throws SQLException {
-        try {
-            if (conexion != null && !conexion.isClosed()) {
-                conexion.close();
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return null;
-    }
-
 }

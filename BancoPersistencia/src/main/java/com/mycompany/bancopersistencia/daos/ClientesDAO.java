@@ -20,9 +20,13 @@ import java.util.logging.Logger;
 public class ClientesDAO implements IClientesDAO {
 
     IConexion conexionBD;
+    String url = "jdbc:mysql://localhost:3306/banco";
+    String uwu = "root";
+    String contra = "1512";
     private static final Logger LOG = Logger.getLogger(ClientesDAO.class.getName());
 
     public ClientesDAO(IConexion conexionBD) {
+        conexionBD = new Conexion(url, uwu, contra);
         this.conexionBD = conexionBD;
     }
 
