@@ -55,7 +55,12 @@ CREATE TABLE Transacciones_Trans(
 ALTER TABLE Cuentas ADD FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente);
 
 ALTER TABLE Transacciones ADD FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente);
-
+	
 ALTER TABLE Transacciones_Retiro ADD FOREIGN KEY (id_transacciones) REFERENCES Transacciones(id_transacciones);
 
 ALTER TABLE Transacciones_Trans ADD FOREIGN KEY (id_transacciones) REFERENCES Transacciones(id_transacciones);
+
+#probar las tablas
+
+SELECT * FROM clientes;
+SELECT usuario, contraseña FROM clientes;

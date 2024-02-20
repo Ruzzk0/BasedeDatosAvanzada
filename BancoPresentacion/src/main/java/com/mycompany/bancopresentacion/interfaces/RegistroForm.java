@@ -27,22 +27,6 @@ public class RegistroForm extends javax.swing.JFrame {
     }
 
     /**
-     * Revisa que el formato de fecha esté correcto y lo limita solamente a
-     * números
-     *
-     * @param txt Fecha de nacimiento
-     */
-    public void validarFechaNac(String txt) {
-        String patron = "^\\d{4}-(0?[1-9]|1[0-2])-(3[01]|[12][0-9]|0?[1-9])$";
-        Pattern pattern = Pattern.compile(patron);
-        Matcher matcher = pattern.matcher(txt);
-
-        if (!matcher.matches()) {
-            JOptionPane.showMessageDialog(this, "Ingrese una fecha con el formato 'yyyy-mm-dd'");
-        }
-    }
-
-    /**
      * Campos de texto para los datos personales del cliente
      *
      * @return Nuevo cliente registrado
@@ -108,7 +92,6 @@ public class RegistroForm extends javax.swing.JFrame {
             dao.agregarCliente(cliente);
             this.mostrarMensajeClienteGuardado(cliente);
             this.limpiarCampos();
-            throw new PersistenciaException();
         } catch (PersistenciaException ex) {
             this.mostrarMensajeErrorAlGuardar();
         }
@@ -384,8 +367,9 @@ public class RegistroForm extends javax.swing.JFrame {
      */
     private void txtfNombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfNombresKeyTyped
         char c = evt.getKeyChar();
-        if (((c < 'a' || c > 'z') && (c < 'A') | c > 'Z') || this.txtfNombres.getText().length() >= 50)
+        if (((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) || this.txtfNombres.getText().length() >= 50) {
             evt.consume();
+        }
     }//GEN-LAST:event_txtfNombresKeyTyped
     /**
      * Revisa que solo existan carácteres entre la A a la Z, sin números

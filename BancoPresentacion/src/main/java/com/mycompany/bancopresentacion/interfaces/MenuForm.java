@@ -1,6 +1,9 @@
 package com.mycompany.bancopresentacion.interfaces;
 
+import com.mycompany.bancopersistencia.daos.excepciones.PersistenciaException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MenuForm extends javax.swing.JFrame {
 
@@ -193,11 +196,19 @@ public class MenuForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTransferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransferMouseClicked
-
+        TransferenciasForm v = new TransferenciasForm();
+        v.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnTransferMouseClicked
 
     private void btnCuentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCuentasMouseClicked
-
+        try {
+            CuentasForm u = new CuentasForm();
+            u.setVisible(true);
+            dispose();
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(MenuForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCuentasMouseClicked
     /**
      * Formulario para actualizar la información con la que te registraste
@@ -205,7 +216,13 @@ public class MenuForm extends javax.swing.JFrame {
      * @param evt Actualiza datos
      */
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-
+        try {
+            ActualizarForm a = new ActualizarForm();
+            a.setVisible(true);
+            dispose();
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(MenuForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
     /**
      * Generador de folio y contraseña aleatorio para las transacciones
@@ -229,7 +246,9 @@ public class MenuForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
-
+        AgregarSaldoForm s = new AgregarSaldoForm();
+        s.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnSaldoActionPerformed
     /**
      * Cierra la sesión actual
@@ -237,7 +256,9 @@ public class MenuForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-
+        LoginForm l = new LoginForm();
+        l.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

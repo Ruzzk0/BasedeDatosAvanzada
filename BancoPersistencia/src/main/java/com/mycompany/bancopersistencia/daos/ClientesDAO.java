@@ -6,6 +6,7 @@ import com.mycompany.bancopersistencia.daos.conexion.IConexion;
 import com.mycompany.bancopersistencia.daos.dtos.ClientesDTO;
 import com.mycompany.bancopersistencia.daos.excepciones.PersistenciaException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,11 +32,9 @@ public class ClientesDAO implements IClientesDAO {
     }
 
     public Clientes agregarCliente(Clientes clientes) throws PersistenciaException {
-        Conexion c = new Conexion();
         String sentenciaSQL = "INSERT INTO Clientes (nombres, apellido_paterno, apellido_materno, fecha_nacimiento, contraseña, usuario, calle, colonia, numero) VALUES (?,?,?,?,?,?,?,?,?);";
 
-        try (Connection conexion = this.conexionBD.conexion(); PreparedStatement comandoSQL = conexion.prepareStatement(sentenciaSQL, Statement.RETURN_GENERATED_KEYS);) {
-            Statement w = c.conexion().createStatement();
+        try (Connection conexion = this.conexionBD.conexion(); PreparedStatement comandoSQL = conexion.prepareStatement(sentenciaSQL, Statement.RETURN_GENERATED_KEYS)) {
 
             comandoSQL.setString(1, clientes.getNombres());
             comandoSQL.setString(2, clientes.getApellido_paterno());
@@ -48,19 +47,19 @@ public class ClientesDAO implements IClientesDAO {
             comandoSQL.setString(9, clientes.getNumero());
 
             int resultado = comandoSQL.executeUpdate();
-            int cant = w.executeUpdate(sentenciaSQL);
 
-            LOG.log(Level.INFO, "Se ha agregado{0}", resultado);
+            LOG.log(Level.INFO, "Se ha agregado: {0}", resultado);
 
-            // Obtener primeros registros
-            ResultSet res = comandoSQL.getGeneratedKeys();
-
-            res.next();
-
-            Clientes clienteGuardado = new Clientes(clientes.getNombres(), clientes.getApellido_paterno(), clientes.getApellido_materno(), clientes.getFecha_nacimiento(), clientes.getContraseña(), clientes.getUsuario(), clientes.getCalle(), clientes.getColonia(), clientes.getNumero());
-
-            //Regresar activista anterior
-            return clienteGuardado;
+            if (resultado == 1) {
+                ResultSet res = comandoSQL.getGeneratedKeys();
+                if (res.next()) {
+                    int idGenerado = res.getInt(1);
+                    clientes.setId_cliente(idGenerado);
+                }
+                return clientes;
+            } else {
+                throw new PersistenciaException("No se pudo agregar el Cliente. La inserción no fue exitosa.");
+            }
 
         } catch (SQLException e) {
             LOG.log(Level.SEVERE, "NO se pudo agregar el Cliente", e);
@@ -68,4 +67,25 @@ public class ClientesDAO implements IClientesDAO {
         }
     }
 
+    public boolean verificarCredenciales(String usuario, String contraseña) {
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(url, uwu, contra);
+
+            String comandoSQL = "SELECT * FROM clientes WHERE usuario = ? AND contraseña = ?";
+            try (PreparedStatement state = connection.prepareStatement(comandoSQL)) {
+                state.setString(1, usuario);
+                state.setString(2, contraseña);
+
+                try (ResultSet rs = state.executeQuery()) {
+                    return rs.next();
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

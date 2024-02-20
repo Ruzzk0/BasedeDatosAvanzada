@@ -1,5 +1,8 @@
 package com.mycompany.bancopresentacion.interfaces;
 
+import com.mycompany.bancopersistencia.daos.ClientesDAO;
+import com.mycompany.bancopersistencia.daos.conexion.Conexion;
+import com.mycompany.bancopersistencia.daos.conexion.IConexion;
 import javax.swing.JOptionPane;
 
 /**
@@ -7,7 +10,15 @@ import javax.swing.JOptionPane;
  */
 public class LoginForm extends javax.swing.JFrame {
 
+    IConexion conexionBD;
+    private final ClientesDAO c;
+    String url = "jdbc:mysql://localhost/banco";
+    String uwu = "root";
+    String contra = "1512";
+
     public LoginForm() {
+        conexionBD = new Conexion(url, uwu, contra);
+        this.c = new ClientesDAO(conexionBD);
         initComponents();
     }
 
@@ -164,7 +175,26 @@ public class LoginForm extends javax.swing.JFrame {
      * @param evt Accede al menú
      */
     private void btnAcceder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceder1ActionPerformed
-        
+        // Obtener el usuario y la contraseña ingresados por el usuario
+        String usuario = txtfUsuarioLogin.getText();
+        String contraseña = pwrdContraLogin.getText();
+
+        if (usuario.isEmpty() || contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Realizar la verificación en la base de datos
+        if (c.verificarCredenciales(usuario, contraseña)) {
+            // Si las credenciales son correctas, permitir el acceso al juego
+            JOptionPane.showMessageDialog(this, "¡¡ Bienvenido " + usuario + " !!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+            MenuForm inicio = new MenuForm();
+            inicio.setVisible(true);
+            this.dispose();
+        } else {
+            // Si las credenciales no son correctas, mostrar un mensaje de error
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAcceder1ActionPerformed
 
     /**
